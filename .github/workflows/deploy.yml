@@ -39,7 +39,9 @@ jobs:
 
       - name: Fetch events from Meetup API
         env:
-          MEETUP_ACCESS_TOKEN: ${{ secrets.MEETUP_ACCESS_TOKEN }}
+          MEETUP_CLIENT_ID: ${{ secrets.MEETUP_CLIENT_ID }}
+          MEETUP_CLIENT_SECRET: ${{ secrets.MEETUP_CLIENT_SECRET }}
+          MEETUP_REFRESH_TOKEN: ${{ secrets.MEETUP_REFRESH_TOKEN }}
         run: npm run fetch-events
 
       - name: Build website

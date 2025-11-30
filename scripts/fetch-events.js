@@ -8,23 +8,21 @@ const __dirname = path.dirname(__filename)
 /**
  * Meetup API Event Fetcher
  * 
- * This script fetches events from the Meetup GraphQL API
- * and writes them to a static JSON file for the website to consume.
+ * This script fetches events from the Meetup GraphQL API using a refresh token
+ * that automatically renews the access token. No user intervention needed!
  * 
- * Required Environment Variable:
- * - MEETUP_ACCESS_TOKEN: Your Meetup API access token
+ * Required Environment Variables:
+ * - MEETUP_CLIENT_ID: OAuth client ID
+ * - MEETUP_CLIENT_SECRET: OAuth client secret  
+ * - MEETUP_REFRESH_TOKEN: Long-lived refresh token (get once, use forever)
  * 
- * To get an access token:
- * 1. Go to https://secure.meetup.com/meetup_api/oauth_consumers/
- * 2. Create an OAuth consumer
- * 3. Use the authorization flow to get an access token
- * 4. The token lasts for a while and can be refreshed when needed
+ * The refresh token is long-lived (~1 year) and automatically gets you a new
+ * access token each time the script runs. You only need to authorize once!
  */
 
 const MEETUP_GROUP_URLNAME = 'code-and-coffee-kc'
 const OUTPUT_FILE = path.join(__dirname, '../public/data/events.json')
 
-// Ensure the output directory exists
 function ensureDirectoryExists(filePath) {
   const dir = path.dirname(filePath)
   if (!fs.existsSync(dir)) {
@@ -33,7 +31,6 @@ function ensureDirectoryExists(filePath) {
   }
 }
 
-// Create fallback empty JSON file
 function createFallbackJSON() {
   const fallbackData = {
     events: [],
@@ -46,7 +43,42 @@ function createFallbackJSON() {
   console.log('✓ Created fallback events.json with empty events array')
 }
 
-// Fetch events from Meetup GraphQL API
+// Auto-refresh access token using refresh token
+async function getAccessToken() {
+  const { MEETUP_CLIENT_ID, MEETUP_CLIENT_SECRET, MEETUP_REFRESH_TOKEN } = process.env
+
+  if (!MEETUP_CLIENT_ID || !MEETUP_CLIENT_SECRET || !MEETUP_REFRESH_TOKEN) {
+    throw new Error('Missing required environment variables: MEETUP_CLIENT_ID, MEETUP_CLIENT_SECRET, MEETUP_REFRESH_TOKEN')
+  }
+
+  console.log('→ Getting fresh access token...')
+
+  const params = new URLSearchParams({
+    client_id: MEETUP_CLIENT_ID,
+    client_secret: MEETUP_CLIENT_SECRET,
+    grant_type: 'refresh_token',
+    refresh_token: MEETUP_REFRESH_TOKEN
+  })
+
+  const response = await fetch('https://secure.meetup.com/oauth2/access', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: params.toString()
+  })
+
+  if (!response.ok) {
+    const errorText = await response.text()
+    throw new Error(`Token refresh failed: ${response.status} - ${errorText}`)
+  }
+
+  const data = await response.json()
+  console.log('✓ Got fresh access token')
+  
+  return data.access_token
+}
+
 async function fetchEvents(accessToken) {
   console.log(`→ Fetching events for group: ${MEETUP_GROUP_URLNAME}`)
 
@@ -55,7 +87,8 @@ async function fetchEvents(accessToken) {
       groupByUrlname(urlname: "${MEETUP_GROUP_URLNAME}") {
         id
         name
-        events(input: { first: 10 }) {
+        events {
+          totalCount
           edges {
             node {
               id
@@ -64,13 +97,7 @@ async function fetchEvents(accessToken) {
               eventUrl
               dateTime
               endTime
-              duration
-              venue {
-                name
-                address
-                city
-                state
-              }
+              status
             }
           }
         }
@@ -78,40 +105,34 @@ async function fetchEvents(accessToken) {
     }
   `
 
-  try {
-    const response = await fetch('https://api.meetup.com/gql-ext', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${accessToken}`
-      },
-      body: JSON.stringify({ query })
-    })
+  const response = await fetch('https://api.meetup.com/gql-ext', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`
+    },
+    body: JSON.stringify({ query })
+  })
 
-    if (!response.ok) {
-      const errorText = await response.text()
-      throw new Error(`GraphQL query failed: ${response.status} - ${errorText}`)
-    }
-
-    const data = await response.json()
-
-    if (data.errors) {
-      throw new Error(`GraphQL errors: ${JSON.stringify(data.errors)}`)
-    }
-
-    if (!data.data || !data.data.groupByUrlname) {
-      throw new Error('Invalid response structure from Meetup API')
-    }
-
-    console.log('✓ Events fetched successfully')
-    return data.data.groupByUrlname.events
-  } catch (error) {
-    console.error('✗ Error fetching events:', error.message)
-    throw error
+  if (!response.ok) {
+    const errorText = await response.text()
+    throw new Error(`GraphQL query failed: ${response.status} - ${errorText}`)
   }
+
+  const data = await response.json()
+
+  if (data.errors) {
+    throw new Error(`GraphQL errors: ${JSON.stringify(data.errors)}`)
+  }
+
+  if (!data.data || !data.data.groupByUrlname) {
+    throw new Error('Invalid response structure from Meetup API')
+  }
+
+  console.log('✓ Events fetched successfully')
+  return data.data.groupByUrlname.events
 }
 
-// Transform Meetup API response to our Event interface
 function transformEvents(meetupEvents) {
   if (!meetupEvents || !meetupEvents.edges) {
     return []
@@ -120,27 +141,28 @@ function transformEvents(meetupEvents) {
   return meetupEvents.edges
     .map(edge => edge.node)
     .filter(event => {
-      // Filter out past events
+      // Filter out past events and inactive events
       const eventDate = new Date(event.dateTime)
-      return eventDate > new Date()
+      return eventDate > new Date() && event.status === 'ACTIVE'
     })
-    .map(event => ({
-      id: event.id,
-      title: event.title,
-      description: event.description || '',
-      dateTime: event.dateTime,
-      duration: event.duration || 120, // Default to 2 hours if not specified
-      venue: event.venue ? {
-        name: event.venue.name || '',
-        address: event.venue.address || '',
-        city: event.venue.city || '',
-        state: event.venue.state || ''
-      } : null,
-      link: event.eventUrl
-    }))
+    .map(event => {
+      // Calculate duration from dateTime and endTime
+      const start = new Date(event.dateTime)
+      const end = new Date(event.endTime)
+      const durationMinutes = Math.round((end - start) / (1000 * 60))
+      
+      return {
+        id: event.id,
+        title: event.title,
+        description: event.description || '',
+        dateTime: event.dateTime,
+        duration: durationMinutes,
+        venue: null, // Venue not in this query
+        link: event.eventUrl
+      }
+    })
 }
 
-// Write events to JSON file
 function writeEventsToFile(events) {
   const outputData = {
     events,
@@ -152,31 +174,23 @@ function writeEventsToFile(events) {
   console.log(`✓ Wrote ${events.length} events to ${OUTPUT_FILE}`)
 }
 
-// Main execution
 async function main() {
   console.log('='.repeat(60))
   console.log('Meetup Events Fetcher')
   console.log('='.repeat(60))
 
-  const accessToken = process.env.MEETUP_ACCESS_TOKEN
-
-  if (!accessToken) {
-    console.error('✗ Error: MEETUP_ACCESS_TOKEN environment variable is required')
-    console.error('Creating fallback empty events file...')
-    createFallbackJSON()
-    console.log('⚠ Build will continue with empty events')
-    process.exit(0)
-  }
-
   try {
-    // Step 1: Fetch events from Meetup API
+    // Step 1: Auto-refresh to get fresh access token
+    const accessToken = await getAccessToken()
+
+    // Step 2: Fetch events
     const meetupEvents = await fetchEvents(accessToken)
 
-    // Step 2: Transform events to our format
+    // Step 3: Transform events
     const transformedEvents = transformEvents(meetupEvents)
     console.log(`✓ Transformed ${transformedEvents.length} upcoming events`)
 
-    // Step 3: Write to file
+    // Step 4: Write to file
     writeEventsToFile(transformedEvents)
 
     console.log('='.repeat(60))
@@ -189,14 +203,11 @@ async function main() {
     console.error('='.repeat(60))
     console.error('Creating fallback empty events file...')
     
-    // Create fallback file on error
     createFallbackJSON()
     
-    // Exit with warning code (not failure, since we created fallback)
     console.log('⚠ Build will continue with empty events')
     process.exit(0)
   }
 }
 
-// Run the script
 main()
