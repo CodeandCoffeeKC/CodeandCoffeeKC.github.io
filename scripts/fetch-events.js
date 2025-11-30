@@ -118,15 +118,6 @@ async function fetchEvents(accessToken) {
               dateTime
               endTime
               status
-              venue {
-                name
-                address
-                city
-                state
-                postalCode
-                lat
-                lng
-              }
             }
           }
         }
@@ -180,17 +171,18 @@ function transformEvents(meetupEvents) {
       const end = new Date(event.endTime)
       const durationMinutes = Math.round((end - start) / (1000 * 60))
       
-      // Format venue if available
+      // Extract venue from title if it follows pattern "Event at Location"
       let venue = null
-      if (event.venue) {
+      const atMatch = event.title.match(/\sat\s(.+)$/i)
+      if (atMatch) {
         venue = {
-          name: event.venue.name || '',
-          address: event.venue.address || '',
-          city: event.venue.city || '',
-          state: event.venue.state || '',
-          postalCode: event.venue.postalCode || '',
-          lat: event.venue.lat || null,
-          lng: event.venue.lng || null
+          name: atMatch[1].trim(),
+          address: '',
+          city: '',
+          state: '',
+          postalCode: '',
+          lat: null,
+          lng: null
         }
       }
       

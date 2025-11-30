@@ -6,7 +6,15 @@
       "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
       "dateTime": "2025-12-13T09:00:00-06:00",
       "duration": 120,
-      "venue": null,
+      "venue": {
+        "name": "Lenexa Public Market",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "lat": null,
+        "lng": null
+      },
       "link": "https://www.meetup.com/code-and-coffee-kc/events/312097509/"
     },
     {
@@ -15,7 +23,15 @@
       "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
       "dateTime": "2025-12-20T09:00:00-06:00",
       "duration": 120,
-      "venue": null,
+      "venue": {
+        "name": "Keystone CoLAB",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "lat": null,
+        "lng": null
+      },
       "link": "https://www.meetup.com/code-and-coffee-kc/events/308500861/"
     },
     {
@@ -24,7 +40,15 @@
       "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
       "dateTime": "2025-12-27T09:00:00-06:00",
       "duration": 120,
-      "venue": null,
+      "venue": {
+        "name": "Lenexa Public Market",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "lat": null,
+        "lng": null
+      },
       "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyhcqbkc/"
     },
     {
@@ -33,7 +57,15 @@
       "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
       "dateTime": "2026-01-03T09:00:00-06:00",
       "duration": 120,
-      "venue": null,
+      "venue": {
+        "name": "Lenexa Public Market",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "lat": null,
+        "lng": null
+      },
       "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjccbfb/"
     },
     {
@@ -42,7 +74,15 @@
       "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
       "dateTime": "2026-01-10T09:00:00-06:00",
       "duration": 120,
-      "venue": null,
+      "venue": {
+        "name": "Lenexa Public Market",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "lat": null,
+        "lng": null
+      },
       "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjccbnb/"
     },
     {
@@ -51,7 +91,15 @@
       "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
       "dateTime": "2026-01-17T09:00:00-06:00",
       "duration": 120,
-      "venue": null,
+      "venue": {
+        "name": "Lenexa Public Market",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "lat": null,
+        "lng": null
+      },
       "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjccbwb/"
     },
     {
@@ -60,7 +108,15 @@
       "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
       "dateTime": "2026-01-24T09:00:00-06:00",
       "duration": 120,
-      "venue": null,
+      "venue": {
+        "name": "Lenexa Public Market",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "lat": null,
+        "lng": null
+      },
       "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjccbgc/"
     },
     {
@@ -69,7 +125,15 @@
       "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
       "dateTime": "2026-01-31T09:00:00-06:00",
       "duration": 120,
-      "venue": null,
+      "venue": {
+        "name": "Lenexa Public Market",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "lat": null,
+        "lng": null
+      },
       "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjccbpc/"
     },
     {
@@ -78,7 +142,15 @@
       "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
       "dateTime": "2026-02-07T09:00:00-06:00",
       "duration": 120,
-      "venue": null,
+      "venue": {
+        "name": "Lenexa Public Market",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "lat": null,
+        "lng": null
+      },
       "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcdbkb/"
     },
     {
@@ -87,7 +159,15 @@
       "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
       "dateTime": "2026-02-14T09:00:00-06:00",
       "duration": 120,
-      "venue": null,
+      "venue": {
+        "name": "Lenexa Public Market",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "lat": null,
+        "lng": null
+      },
       "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcdbsb/"
     },
     {
@@ -96,7 +176,15 @@
       "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
       "dateTime": "2026-02-21T09:00:00-06:00",
       "duration": 120,
-      "venue": null,
+      "venue": {
+        "name": "Lenexa Public Market",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "lat": null,
+        "lng": null
+      },
       "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcdbcc/"
     },
     {
@@ -105,7 +193,15 @@
       "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
       "dateTime": "2026-02-28T09:00:00-06:00",
       "duration": 120,
-      "venue": null,
+      "venue": {
+        "name": "Lenexa Public Market",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "lat": null,
+        "lng": null
+      },
       "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcdblc/"
     },
     {
@@ -114,7 +210,15 @@
       "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
       "dateTime": "2026-03-07T09:00:00-06:00",
       "duration": 120,
-      "venue": null,
+      "venue": {
+        "name": "Lenexa Public Market",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "lat": null,
+        "lng": null
+      },
       "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcfbkb/"
     },
     {
@@ -123,7 +227,15 @@
       "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
       "dateTime": "2026-03-14T09:00:00-05:00",
       "duration": 120,
-      "venue": null,
+      "venue": {
+        "name": "Lenexa Public Market",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "lat": null,
+        "lng": null
+      },
       "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcfbsb/"
     },
     {
@@ -132,7 +244,15 @@
       "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
       "dateTime": "2026-03-21T09:00:00-05:00",
       "duration": 120,
-      "venue": null,
+      "venue": {
+        "name": "Lenexa Public Market",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "lat": null,
+        "lng": null
+      },
       "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcfbcc/"
     },
     {
@@ -141,7 +261,15 @@
       "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
       "dateTime": "2026-03-28T09:00:00-05:00",
       "duration": 120,
-      "venue": null,
+      "venue": {
+        "name": "Lenexa Public Market",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "lat": null,
+        "lng": null
+      },
       "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcfblc/"
     },
     {
@@ -150,7 +278,15 @@
       "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
       "dateTime": "2026-04-04T09:00:00-05:00",
       "duration": 120,
-      "venue": null,
+      "venue": {
+        "name": "Lenexa Public Market",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "lat": null,
+        "lng": null
+      },
       "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcgbgb/"
     },
     {
@@ -159,7 +295,15 @@
       "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
       "dateTime": "2026-04-11T09:00:00-05:00",
       "duration": 120,
-      "venue": null,
+      "venue": {
+        "name": "Lenexa Public Market",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "lat": null,
+        "lng": null
+      },
       "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcgbpb/"
     },
     {
@@ -168,7 +312,15 @@
       "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
       "dateTime": "2026-04-18T09:00:00-05:00",
       "duration": 120,
-      "venue": null,
+      "venue": {
+        "name": "Lenexa Public Market",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "lat": null,
+        "lng": null
+      },
       "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcgbxb/"
     },
     {
@@ -177,9 +329,17 @@
       "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
       "dateTime": "2026-04-25T09:00:00-05:00",
       "duration": 120,
-      "venue": null,
+      "venue": {
+        "name": "Lenexa Public Market",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "lat": null,
+        "lng": null
+      },
       "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcgbhc/"
     }
   ],
-  "lastUpdated": "2025-11-30T17:51:50.979Z"
+  "lastUpdated": "2025-11-30T21:50:06.383Z"
 }
