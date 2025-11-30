@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import dotenv from 'dotenv'
+import { lookupVenue } from './venue-database.js'
 
 // Load environment variables from .env file
 dotenv.config()
@@ -175,15 +176,9 @@ function transformEvents(meetupEvents) {
       let venue = null
       const atMatch = event.title.match(/\sat\s(.+)$/i)
       if (atMatch) {
-        venue = {
-          name: atMatch[1].trim(),
-          address: '',
-          city: '',
-          state: '',
-          postalCode: '',
-          lat: null,
-          lng: null
-        }
+        const venueName = atMatch[1].trim()
+        // Look up venue details from database
+        venue = lookupVenue(venueName)
       }
       
       return {

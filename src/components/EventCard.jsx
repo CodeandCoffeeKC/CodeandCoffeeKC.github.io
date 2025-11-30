@@ -38,6 +38,31 @@ function EventCard({ title, dateTime, duration, venue, description, link }) {
     return parts.length > 0 ? parts.join(', ') : 'Location TBA'
   }
 
+  // Generate Google Maps link if coordinates are available
+  const getMapLink = (venue) => {
+    if (!venue) return null
+    
+    if (venue.lat && venue.lng) {
+      return `https://www.google.com/maps/search/?api=1&query=${venue.lat},${venue.lng}`
+    }
+    
+    // Fallback to address search if no coordinates
+    if (venue.address && venue.city && venue.state) {
+      const query = encodeURIComponent(`${venue.address}, ${venue.city}, ${venue.state}`)
+      return `https://www.google.com/maps/search/?api=1&query=${query}`
+    }
+    
+    // Fallback to venue name search
+    if (venue.name) {
+      const query = encodeURIComponent(venue.name)
+      return `https://www.google.com/maps/search/?api=1&query=${query}`
+    }
+    
+    return null
+  }
+
+  const mapLink = getMapLink(venue)
+
   return (
     <article className="event-card">
       <div className="event-card-header">
@@ -57,7 +82,20 @@ function EventCard({ title, dateTime, duration, venue, description, link }) {
         
         <div className="event-detail">
           <span className="event-detail-label">Location:</span>
-          <span className="event-detail-value">{formatLocation(venue)}</span>
+          <span className="event-detail-value">
+            {formatLocation(venue)}
+            {mapLink && (
+              <a 
+                href={mapLink} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="map-link"
+                style={{ marginLeft: '8px', fontSize: '0.9em' }}
+              >
+                📍 Map
+              </a>
+            )}
+          </span>
         </div>
         
         {description && (
