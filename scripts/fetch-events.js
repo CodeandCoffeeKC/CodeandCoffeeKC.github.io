@@ -43,29 +43,31 @@ function createFallbackJSON() {
   console.log('✓ Created fallback events.json with empty events array')
 }
 
-// Get access token - either directly or via refresh
+// Get access token using refresh token (with automatic token rotation)
 async function getAccessToken() {
-  // Option 1: Use access token directly (simpler, update manually when expired)
-  if (process.env.MEETUP_ACCESS_TOKEN) {
-    console.log('→ Using provided access token')
-    return process.env.MEETUP_ACCESS_TOKEN
+  const { MEETUP_CLIENT_ID, MEETUP_CLIENT_SECRET } = process.env
+  const REFRESH_TOKEN_FILE = path.join(__dirname, '../.meetup-refresh-token')
+
+  if (!MEETUP_CLIENT_ID || !MEETUP_CLIENT_SECRET) {
+    throw new Error('Missing required environment variables: MEETUP_CLIENT_ID, MEETUP_CLIENT_SECRET')
   }
 
-  // Option 2: Auto-refresh using refresh token (complex due to token rotation)
-  const { MEETUP_CLIENT_ID, MEETUP_CLIENT_SECRET, MEETUP_REFRESH_TOKEN } = process.env
-
-  if (!MEETUP_CLIENT_ID || !MEETUP_CLIENT_SECRET || !MEETUP_REFRESH_TOKEN) {
-    throw new Error('Missing required environment variables: Either MEETUP_ACCESS_TOKEN or (MEETUP_CLIENT_ID, MEETUP_CLIENT_SECRET, MEETUP_REFRESH_TOKEN)')
+  // Read current refresh token from file
+  let refreshToken
+  try {
+    refreshToken = fs.readFileSync(REFRESH_TOKEN_FILE, 'utf8').trim()
+    console.log('→ Read refresh token from file')
+  } catch (error) {
+    throw new Error(`Could not read refresh token from ${REFRESH_TOKEN_FILE}: ${error.message}`)
   }
 
   console.log('→ Refreshing access token...')
-  console.log('⚠️  Note: Meetup uses refresh token rotation - this token will be invalidated after use')
 
   const params = new URLSearchParams({
     client_id: MEETUP_CLIENT_ID,
     client_secret: MEETUP_CLIENT_SECRET,
     grant_type: 'refresh_token',
-    refresh_token: MEETUP_REFRESH_TOKEN
+    refresh_token: refreshToken
   })
 
   const response = await fetch('https://secure.meetup.com/oauth2/access', {
@@ -83,7 +85,12 @@ async function getAccessToken() {
 
   const data = await response.json()
   console.log('✓ Got fresh access token')
-  console.log('⚠️  New refresh token (save this!):', data.refresh_token)
+  
+  // Save new refresh token to file (Meetup uses token rotation)
+  if (data.refresh_token) {
+    fs.writeFileSync(REFRESH_TOKEN_FILE, data.refresh_token)
+    console.log('✓ Saved new refresh token to file')
+  }
   
   return data.access_token
 }

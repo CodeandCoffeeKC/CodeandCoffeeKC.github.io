@@ -39,8 +39,17 @@ jobs:
 
       - name: Fetch events from Meetup API
         env:
-          MEETUP_ACCESS_TOKEN: ${{ secrets.MEETUP_ACCESS_TOKEN }}
+          MEETUP_CLIENT_ID: ${{ secrets.MEETUP_CLIENT_ID }}
+          MEETUP_CLIENT_SECRET: ${{ secrets.MEETUP_CLIENT_SECRET }}
         run: npm run fetch-events
+
+      - name: Commit updated refresh token
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .meetup-refresh-token
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore: update Meetup refresh token [skip ci]"
+          git push || echo "No changes to push"
 
       - name: Build website
         run: npm run build
