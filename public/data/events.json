@@ -1,5 +1,185 @@
 {
-  "events": [],
-  "lastUpdated": "2025-11-30T17:28:20.141Z",
-  "note": "No events available - API fetch failed or returned no data"
+  "events": [
+    {
+      "id": "312097509",
+      "title": "Mentoring at Lenexa Public Market",
+      "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
+      "dateTime": "2025-12-13T09:00:00-06:00",
+      "duration": 120,
+      "venue": null,
+      "link": "https://www.meetup.com/code-and-coffee-kc/events/312097509/"
+    },
+    {
+      "id": "308500861",
+      "title": "Mentoring at Keystone CoLAB",
+      "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
+      "dateTime": "2025-12-20T09:00:00-06:00",
+      "duration": 120,
+      "venue": null,
+      "link": "https://www.meetup.com/code-and-coffee-kc/events/308500861/"
+    },
+    {
+      "id": "xrczttyhcqbkc",
+      "title": "Mentoring at Lenexa Public Market",
+      "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
+      "dateTime": "2025-12-27T09:00:00-06:00",
+      "duration": 120,
+      "venue": null,
+      "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyhcqbkc/"
+    },
+    {
+      "id": "xrczttyjccbfb",
+      "title": "Mentoring at Lenexa Public Market",
+      "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
+      "dateTime": "2026-01-03T09:00:00-06:00",
+      "duration": 120,
+      "venue": null,
+      "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjccbfb/"
+    },
+    {
+      "id": "xrczttyjccbnb",
+      "title": "Mentoring at Lenexa Public Market",
+      "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
+      "dateTime": "2026-01-10T09:00:00-06:00",
+      "duration": 120,
+      "venue": null,
+      "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjccbnb/"
+    },
+    {
+      "id": "xrczttyjccbwb",
+      "title": "Mentoring at Lenexa Public Market",
+      "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
+      "dateTime": "2026-01-17T09:00:00-06:00",
+      "duration": 120,
+      "venue": null,
+      "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjccbwb/"
+    },
+    {
+      "id": "xrczttyjccbgc",
+      "title": "Mentoring at Lenexa Public Market",
+      "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
+      "dateTime": "2026-01-24T09:00:00-06:00",
+      "duration": 120,
+      "venue": null,
+      "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjccbgc/"
+    },
+    {
+      "id": "xrczttyjccbpc",
+      "title": "Mentoring at Lenexa Public Market",
+      "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
+      "dateTime": "2026-01-31T09:00:00-06:00",
+      "duration": 120,
+      "venue": null,
+      "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjccbpc/"
+    },
+    {
+      "id": "xrczttyjcdbkb",
+      "title": "Mentoring at Lenexa Public Market",
+      "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
+      "dateTime": "2026-02-07T09:00:00-06:00",
+      "duration": 120,
+      "venue": null,
+      "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcdbkb/"
+    },
+    {
+      "id": "xrczttyjcdbsb",
+      "title": "Mentoring at Lenexa Public Market",
+      "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
+      "dateTime": "2026-02-14T09:00:00-06:00",
+      "duration": 120,
+      "venue": null,
+      "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcdbsb/"
+    },
+    {
+      "id": "xrczttyjcdbcc",
+      "title": "Mentoring at Lenexa Public Market",
+      "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
+      "dateTime": "2026-02-21T09:00:00-06:00",
+      "duration": 120,
+      "venue": null,
+      "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcdbcc/"
+    },
+    {
+      "id": "xrczttyjcdblc",
+      "title": "Mentoring at Lenexa Public Market",
+      "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
+      "dateTime": "2026-02-28T09:00:00-06:00",
+      "duration": 120,
+      "venue": null,
+      "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcdblc/"
+    },
+    {
+      "id": "xrczttyjcfbkb",
+      "title": "Mentoring at Lenexa Public Market",
+      "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
+      "dateTime": "2026-03-07T09:00:00-06:00",
+      "duration": 120,
+      "venue": null,
+      "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcfbkb/"
+    },
+    {
+      "id": "xrczttyjcfbsb",
+      "title": "Mentoring at Lenexa Public Market",
+      "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
+      "dateTime": "2026-03-14T09:00:00-05:00",
+      "duration": 120,
+      "venue": null,
+      "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcfbsb/"
+    },
+    {
+      "id": "xrczttyjcfbcc",
+      "title": "Mentoring at Lenexa Public Market",
+      "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
+      "dateTime": "2026-03-21T09:00:00-05:00",
+      "duration": 120,
+      "venue": null,
+      "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcfbcc/"
+    },
+    {
+      "id": "xrczttyjcfblc",
+      "title": "Mentoring at Lenexa Public Market",
+      "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
+      "dateTime": "2026-03-28T09:00:00-05:00",
+      "duration": 120,
+      "venue": null,
+      "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcfblc/"
+    },
+    {
+      "id": "xrczttyjcgbgb",
+      "title": "Mentoring at Lenexa Public Market",
+      "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
+      "dateTime": "2026-04-04T09:00:00-05:00",
+      "duration": 120,
+      "venue": null,
+      "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcgbgb/"
+    },
+    {
+      "id": "xrczttyjcgbpb",
+      "title": "Mentoring at Lenexa Public Market",
+      "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
+      "dateTime": "2026-04-11T09:00:00-05:00",
+      "duration": 120,
+      "venue": null,
+      "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcgbpb/"
+    },
+    {
+      "id": "xrczttyjcgbxb",
+      "title": "Mentoring at Lenexa Public Market",
+      "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
+      "dateTime": "2026-04-18T09:00:00-05:00",
+      "duration": 120,
+      "venue": null,
+      "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcgbxb/"
+    },
+    {
+      "id": "xrczttyjcgbhc",
+      "title": "Mentoring at Lenexa Public Market",
+      "description": "We will help you get to where you want to be. Whether that is finding a code bootcamp, prepping for a job interview, or leveling up your skills. We have experienced programmers looking to share our technical knowledge and access to our network.\n\nCome join IT professionals for coffee.",
+      "dateTime": "2026-04-25T09:00:00-05:00",
+      "duration": 120,
+      "venue": null,
+      "link": "https://www.meetup.com/code-and-coffee-kc/events/xrczttyjcgbhc/"
+    }
+  ],
+  "lastUpdated": "2025-11-30T17:51:50.979Z"
 }
