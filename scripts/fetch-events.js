@@ -1,6 +1,10 @@
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import dotenv from 'dotenv'
+
+// Load environment variables from .env file
+dotenv.config()
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -114,6 +118,15 @@ async function fetchEvents(accessToken) {
               dateTime
               endTime
               status
+              venue {
+                name
+                address
+                city
+                state
+                postalCode
+                lat
+                lng
+              }
             }
           }
         }
@@ -167,13 +180,27 @@ function transformEvents(meetupEvents) {
       const end = new Date(event.endTime)
       const durationMinutes = Math.round((end - start) / (1000 * 60))
       
+      // Format venue if available
+      let venue = null
+      if (event.venue) {
+        venue = {
+          name: event.venue.name || '',
+          address: event.venue.address || '',
+          city: event.venue.city || '',
+          state: event.venue.state || '',
+          postalCode: event.venue.postalCode || '',
+          lat: event.venue.lat || null,
+          lng: event.venue.lng || null
+        }
+      }
+      
       return {
         id: event.id,
         title: event.title,
         description: event.description || '',
         dateTime: event.dateTime,
         duration: durationMinutes,
-        venue: null, // Venue not in this query
+        venue: venue,
         link: event.eventUrl
       }
     })
