@@ -1,5 +1,11 @@
 import readline from 'readline'
 import dotenv from 'dotenv'
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 // Load environment variables from .env file
 dotenv.config()
@@ -87,24 +93,35 @@ async function main() {
 
     const data = await response.json()
     
+    // Save refresh token to file
+    const refreshTokenFile = path.join(__dirname, '../.meetup-refresh-token')
+    fs.writeFileSync(refreshTokenFile, data.refresh_token)
+    
     console.log()
     console.log('='.repeat(60))
     console.log('✓ Success! Here are your tokens:')
     console.log('='.repeat(60))
     console.log()
-    console.log('ACCESS TOKEN (use this in MEETUP_ACCESS_TOKEN):')
+    console.log('ACCESS TOKEN (expires in ~1 hour):')
     console.log(data.access_token)
     console.log()
-    console.log('REFRESH TOKEN (save this for later):')
+    console.log('REFRESH TOKEN (saved to .meetup-refresh-token):')
     console.log(data.refresh_token)
+    console.log()
+    console.log('✓ Refresh token automatically saved to .meetup-refresh-token')
     console.log()
     console.log('Token expires in:', data.expires_in, 'seconds')
     console.log('That\'s approximately', Math.floor(data.expires_in / 3600), 'hours')
     console.log()
     console.log('='.repeat(60))
     console.log()
-    console.log('Add this to your GitHub secrets:')
-    console.log('MEETUP_ACCESS_TOKEN=' + data.access_token)
+    console.log('Next steps:')
+    console.log('1. Commit the .meetup-refresh-token file:')
+    console.log('   git add .meetup-refresh-token')
+    console.log('   git commit -m "chore: update refresh token"')
+    console.log('   git push')
+    console.log()
+    console.log('2. The GitHub Action will automatically use it on next deployment')
     console.log()
     
   } catch (error) {
