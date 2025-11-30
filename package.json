@@ -10,6 +10,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "fetch-events": "node scripts/fetch-events.js",
+    "get-token": "node scripts/get-meetup-token.js",
     "prebuild": "npm run fetch-events"
   },
   "dependencies": {

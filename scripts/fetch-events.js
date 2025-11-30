@@ -79,7 +79,7 @@ async function fetchEvents(accessToken) {
   `
 
   try {
-    const response = await fetch('https://api.meetup.com/gql', {
+    const response = await fetch('https://api.meetup.com/gql-ext', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
