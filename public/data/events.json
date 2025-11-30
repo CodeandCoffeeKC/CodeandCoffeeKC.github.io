@@ -1,47 +1,5 @@
 {
-  "events": [
-    {
-      "id": "sample-event-1",
-      "title": "Code & Coffee KC - Weekly Meetup",
-      "description": "Join us for our weekly Code & Coffee meetup! Bring your laptop, your current project, or just come to chat with fellow developers. All skill levels welcome. We'll have coffee, snacks, and great conversation about all things tech.",
-      "dateTime": "2024-12-07T09:00:00-06:00",
-      "duration": 180,
-      "venue": {
-        "name": "The Roasterie Cafe",
-        "address": "1204 W 27th St",
-        "city": "Kansas City",
-        "state": "MO"
-      },
-      "link": "https://www.meetup.com/code-and-coffee-kc/"
-    },
-    {
-      "id": "sample-event-2",
-      "title": "Code & Coffee KC - Holiday Social",
-      "description": "Special holiday edition of Code & Coffee! Join us for a festive gathering with your fellow developers. We'll have seasonal treats, hot cocoa, and plenty of time to work on projects or just socialize. Bring a friend who's interested in coding!",
-      "dateTime": "2024-12-21T10:00:00-06:00",
-      "duration": 240,
-      "venue": {
-        "name": "Messenger Coffee Co.",
-        "address": "1624 Grand Blvd",
-        "city": "Kansas City",
-        "state": "MO"
-      },
-      "link": "https://www.meetup.com/code-and-coffee-kc/"
-    },
-    {
-      "id": "sample-event-3",
-      "title": "New Year Code & Coffee Kickoff",
-      "description": "Start the new year right with Code & Coffee KC! Share your coding goals for 2025, work on projects, and connect with the local developer community. Whether you're learning to code or you're a seasoned pro, everyone is welcome.",
-      "dateTime": "2025-01-04T09:00:00-06:00",
-      "duration": 180,
-      "venue": {
-        "name": "Oddly Correct Coffee",
-        "address": "3940 Main St",
-        "city": "Kansas City",
-        "state": "MO"
-      },
-      "link": "https://www.meetup.com/code-and-coffee-kc/"
-    }
-  ],
-  "lastUpdated": "2024-11-30T12:00:00Z"
+  "events": [],
+  "lastUpdated": "2025-11-30T16:34:10.174Z",
+  "note": "No events available - API fetch failed or returned no data"
 }

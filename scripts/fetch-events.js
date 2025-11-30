@@ -8,13 +8,17 @@ const __dirname = path.dirname(__filename)
 /**
  * Meetup API Event Fetcher
  * 
- * This script fetches events from the Meetup GraphQL API using OAuth 2.0
+ * This script fetches events from the Meetup GraphQL API
  * and writes them to a static JSON file for the website to consume.
  * 
- * Required Environment Variables:
- * - MEETUP_CLIENT_ID: OAuth client ID
- * - MEETUP_CLIENT_SECRET: OAuth client secret
- * - MEETUP_REFRESH_TOKEN: Long-lived refresh token
+ * Required Environment Variable:
+ * - MEETUP_ACCESS_TOKEN: Your Meetup API access token
+ * 
+ * To get an access token:
+ * 1. Go to https://secure.meetup.com/meetup_api/oauth_consumers/
+ * 2. Create an OAuth consumer
+ * 3. Use the authorization flow to get an access token
+ * 4. The token lasts for a while and can be refreshed when needed
  */
 
 const MEETUP_GROUP_URLNAME = 'code-and-coffee-kc'
@@ -40,47 +44,6 @@ function createFallbackJSON() {
   ensureDirectoryExists(OUTPUT_FILE)
   fs.writeFileSync(OUTPUT_FILE, JSON.stringify(fallbackData, null, 2))
   console.log('✓ Created fallback events.json with empty events array')
-}
-
-// Refresh the access token using the refresh token
-async function refreshAccessToken() {
-  const { MEETUP_CLIENT_ID, MEETUP_CLIENT_SECRET, MEETUP_REFRESH_TOKEN } = process.env
-
-  if (!MEETUP_CLIENT_ID || !MEETUP_CLIENT_SECRET || !MEETUP_REFRESH_TOKEN) {
-    throw new Error('Missing required environment variables: MEETUP_CLIENT_ID, MEETUP_CLIENT_SECRET, MEETUP_REFRESH_TOKEN')
-  }
-
-  console.log('→ Refreshing access token...')
-
-  const params = new URLSearchParams({
-    client_id: MEETUP_CLIENT_ID,
-    client_secret: MEETUP_CLIENT_SECRET,
-    grant_type: 'refresh_token',
-    refresh_token: MEETUP_REFRESH_TOKEN
-  })
-
-  try {
-    const response = await fetch('https://secure.meetup.com/oauth2/access', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: params.toString()
-    })
-
-    if (!response.ok) {
-      const errorText = await response.text()
-      throw new Error(`Token refresh failed: ${response.status} - ${errorText}`)
-    }
-
-    const data = await response.json()
-    console.log('✓ Access token refreshed successfully')
-    
-    return data.access_token
-  } catch (error) {
-    console.error('✗ Error refreshing access token:', error.message)
-    throw error
-  }
 }
 
 // Fetch events from Meetup GraphQL API
@@ -195,18 +158,25 @@ async function main() {
   console.log('Meetup Events Fetcher')
   console.log('='.repeat(60))
 
-  try {
-    // Step 1: Refresh access token
-    const accessToken = await refreshAccessToken()
+  const accessToken = process.env.MEETUP_ACCESS_TOKEN
 
-    // Step 2: Fetch events from Meetup API
+  if (!accessToken) {
+    console.error('✗ Error: MEETUP_ACCESS_TOKEN environment variable is required')
+    console.error('Creating fallback empty events file...')
+    createFallbackJSON()
+    console.log('⚠ Build will continue with empty events')
+    process.exit(0)
+  }
+
+  try {
+    // Step 1: Fetch events from Meetup API
     const meetupEvents = await fetchEvents(accessToken)
 
-    // Step 3: Transform events to our format
+    // Step 2: Transform events to our format
     const transformedEvents = transformEvents(meetupEvents)
     console.log(`✓ Transformed ${transformedEvents.length} upcoming events`)
 
-    // Step 4: Write to file
+    // Step 3: Write to file
     writeEventsToFile(transformedEvents)
 
     console.log('='.repeat(60))
