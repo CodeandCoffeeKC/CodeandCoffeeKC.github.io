@@ -1,12 +1,17 @@
 import readline from 'readline'
+import dotenv from 'dotenv'
+
+// Load environment variables from .env file
+dotenv.config()
 
 /**
  * Helper script to get Meetup access token from authorization code
  * 
  * Usage:
- * 1. Run: node scripts/get-meetup-token.js
- * 2. Follow the prompts
- * 3. Copy the access token to use in your environment variables
+ * 1. Create a .env file with MEETUP_CLIENT_ID and MEETUP_CLIENT_SECRET
+ * 2. Run: node scripts/get-meetup-token.js
+ * 3. Follow the prompts
+ * 4. Copy the refresh token to .meetup-refresh-token file
  */
 
 const rl = readline.createInterface({
@@ -26,17 +31,31 @@ async function main() {
   console.log('='.repeat(60))
   console.log()
 
-  const clientId = await question('Enter your MEETUP_CLIENT_ID: ')
-  const clientSecret = await question('Enter your MEETUP_CLIENT_SECRET: ')
+  const clientId = process.env.MEETUP_CLIENT_ID
+  const clientSecret = process.env.MEETUP_CLIENT_SECRET
+  
+  if (!clientId || !clientSecret) {
+    console.error('Error: Missing MEETUP_CLIENT_ID or MEETUP_CLIENT_SECRET in .env file')
+    console.log()
+    console.log('Please create a .env file with:')
+    console.log('MEETUP_CLIENT_ID=your_client_id')
+    console.log('MEETUP_CLIENT_SECRET=your_client_secret')
+    process.exit(1)
+  }
+  
+  console.log('Using credentials from .env file')
+  console.log()
+  
+  const redirectUri = 'https://oauth.pstmn.io/v1/callback'
   
   console.log()
   console.log('Now, open this URL in your browser:')
   console.log()
-  const authUrl = `https://secure.meetup.com/oauth2/authorize?client_id=${clientId}&response_type=code&redirect_uri=https://example.com/meetup-callback`
+  const authUrl = `https://secure.meetup.com/oauth2/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}`
   console.log(authUrl)
   console.log()
   console.log('After authorizing, you will be redirected to a URL like:')
-  console.log('https://example.com/meetup-callback?code=XXXXX')
+  console.log(`${redirectUri}?code=XXXXX`)
   console.log()
   
   const authCode = await question('Enter the code from the redirect URL: ')
@@ -49,7 +68,7 @@ async function main() {
       client_id: clientId,
       client_secret: clientSecret,
       grant_type: 'authorization_code',
-      redirect_uri: 'https://example.com/meetup-callback',
+      redirect_uri: redirectUri,
       code: authCode
     })
 
