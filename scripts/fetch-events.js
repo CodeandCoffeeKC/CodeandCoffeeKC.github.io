@@ -43,15 +43,23 @@ function createFallbackJSON() {
   console.log('✓ Created fallback events.json with empty events array')
 }
 
-// Auto-refresh access token using refresh token
+// Get access token - either directly or via refresh
 async function getAccessToken() {
+  // Option 1: Use access token directly (simpler, update manually when expired)
+  if (process.env.MEETUP_ACCESS_TOKEN) {
+    console.log('→ Using provided access token')
+    return process.env.MEETUP_ACCESS_TOKEN
+  }
+
+  // Option 2: Auto-refresh using refresh token (complex due to token rotation)
   const { MEETUP_CLIENT_ID, MEETUP_CLIENT_SECRET, MEETUP_REFRESH_TOKEN } = process.env
 
   if (!MEETUP_CLIENT_ID || !MEETUP_CLIENT_SECRET || !MEETUP_REFRESH_TOKEN) {
-    throw new Error('Missing required environment variables: MEETUP_CLIENT_ID, MEETUP_CLIENT_SECRET, MEETUP_REFRESH_TOKEN')
+    throw new Error('Missing required environment variables: Either MEETUP_ACCESS_TOKEN or (MEETUP_CLIENT_ID, MEETUP_CLIENT_SECRET, MEETUP_REFRESH_TOKEN)')
   }
 
-  console.log('→ Getting fresh access token...')
+  console.log('→ Refreshing access token...')
+  console.log('⚠️  Note: Meetup uses refresh token rotation - this token will be invalidated after use')
 
   const params = new URLSearchParams({
     client_id: MEETUP_CLIENT_ID,
@@ -75,6 +83,7 @@ async function getAccessToken() {
 
   const data = await response.json()
   console.log('✓ Got fresh access token')
+  console.log('⚠️  New refresh token (save this!):', data.refresh_token)
   
   return data.access_token
 }
